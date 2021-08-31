@@ -1,0 +1,16 @@
+/*Consulta para extraer el nombre de los clientes con el porcentaje de descuento obtenido en la compra y cual fue el vendedor que vendió o
+atendió el pedido.*/
+SELECT NOMBRECONTACTO AS "NOMBRE DE CLIENTE", DESCUENTO, NOMBRE AS "NOMBRE EMPLEADO", APELLIDO AS "APELLIDO EMPLEADO" 
+FROM CLIENTES AS C INNER JOIN ORDENES AS O ON C.CLIENTEID = O.CLIENTEID INNER JOIN EMPLEADOS AS E ON O.EMPLEADOID = E.EMPLEADOID;
+
+/*Consulta para extraer los productos con el nombre de proveedor y su contacto.*/
+SELECT DESCRIPCION AS "PRODUCTO", NOMBREPROV AS "NOMBRE PROVEEDOR", CONTACTO
+FROM PRODUCTOS AS P INNER JOIN PROVEEDORES AS C ON P.PROVEEDORID = C.PROVEEDORID;
+
+/*Consulta para extraer de la tabla ordenes los clientes cuyo nombre empiecen con la letra s.*/
+SELECT C.CLIENTEID, ORDENID, NOMBRECIA AS "NOMBRE CLIENTE", NOMBRECONTACTO 
+FROM ORDENES AS O INNER JOIN CLIENTES AS C ON O.CLIENTEID = C.CLIENTEID WHERE NOMBRECIA LIKE 'S%';
+
+/*Consulta para mostrar los productos con sus categorías ordenado por categoría.*/
+SELECT C.CATEGORIAID, DESCRIPCION AS "PRODUCTOS", NOMBRECAT AS "CATEGORIA" 
+FROM PRODUCTOS AS P INNER JOIN CATEGORIAS AS C ON P.CATEGORIAID = C.CATEGORIAID ORDER BY C.CATEGORIAID;
